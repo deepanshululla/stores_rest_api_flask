@@ -5,8 +5,9 @@ from flask_jwt import jwt_required
 
 
 class DB_Handler:
+    DB_NAME='data.db'
     def __init__(self):
-        self.connection = sqlite3.connect('data.db')
+        self.connection = sqlite3.connect(self.DB_NAME)
         self.cursor = self.connection.cursor()
     
     def execute_query(self, query, query_tuple=None):
@@ -36,7 +37,7 @@ class ItemList(Resource):
             items.append({'name': row[0], 'price': row[1]})
         if items:
             return {"items":items}
-        return {'message':"Item not found"}, 404
+        return {'message':"No items found"}, 404
 
 class Item(Resource):
     TABLE_NAME = 'items'

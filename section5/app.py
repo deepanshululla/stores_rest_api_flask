@@ -3,7 +3,7 @@ from flask_restful import Api
 from flask_jwt import JWT
 import os
 from security import authenticate, identity
-from user import UserRegister
+from user import UserRegister, Users
 from item import Item, ItemList
 
 app = Flask(__name__)
@@ -15,6 +15,7 @@ jwt = JWT(app, authenticate, identity)
 api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
+api.add_resource(Users, '/users')
 
 if __name__=="__main__":
     host = os.getenv('IP', '0.0.0.0');
