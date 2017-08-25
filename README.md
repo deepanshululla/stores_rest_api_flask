@@ -12,4 +12,8 @@ Section 4
 
 Section 5 
 
-* Flask API with DB backend
+* Flask API with SQLLITE backend
+
+Section 6
+
+* Flask API with SQLALCHEMY used as ORM
