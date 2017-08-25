@@ -1,13 +1,23 @@
+import sqlite3
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
-import sqlite3
 
 items=[]
 
-
 class ItemList(Resource):
     def get(self):
-        return {"items": items}
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT * FROM items"
+        result = cursor.execute(query)
+        row = result.fetchone()
+        
+        connection.close()
+        if row:
+            return {'item':{'name': row[0], 'price': row[1]}}, 200
+        
+        return {'message':"Item not found"}, 404
+        # return {"items": items}
 
 class Item(Resource):
     parser = reqparse.RequestParser()
@@ -18,25 +28,46 @@ class Item(Resource):
     )
     
     @jwt_required()
-    def get(self,item_name):
-
-        filter_obj = filter(lambda x: x['name'] == item_name, items)
-        item =next(filter_obj,None) 
-        # for each item. If there is no item it returns None
+    def get(self,name):
+        # the name variable corresponds to {{ url }}/<variable-name> in the GET request
+        item = self.find_by_name(name)
         if item:
-            return {"item": item}, 200
-        else:
-            return {"message":"The item doesn't exist"}, 404
-       
+            return item
+        
+        return {'message':"Item not found"}, 404
+      
+    @classmethod
+    def execute_query(cls, query, query_tuple):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        result = cursor.execute(query,query_tuple)
+        connection.commit()
+        connection.close()
+        return result
     
-    def post(self,item_name):
-        item = next(filter(lambda x: x['name'] == item_name, items),None)
+    @classmethod        
+    def find_by_name(cls,name):
+
+        query = "SELECT * FROM items WHERE name=? LIMIT 1"
+        result = cls.execute_query(query, (name,))
+        row = result
+        
+        if row:
+            return {'item':{'name': row[0], 'price': row[1]}}
+        else:
+            return
+        
+    
+    def post(self,name):
+        item = self.find_by_name(name)
         if item:
-            return {"message":"The item with name {} already exists".format(item_name)}, 400
+            return {"message":"The item with name {} already exists".format(name)}, 400
             # 400 is bad request
         data = Item.parser.parse_args()
-        item_add = {"name": item_name, "price": data.get('price')}
-        items.append(item_add)
+        item_add = {"name": name, "price": data.get('price')}
+        
+        query = "INSERT INTO items VALUES(?,?)"
+        self.execute_query(query, (item_add["name"],item_add['price']))
         return item_add, 201
         # 201 is for object is created
     
@@ -52,12 +83,14 @@ class Item(Resource):
         else:
             # item["price"]= data.get('price')
             item.update(data)
-        return item
+        return item, 201
     
-    def delete(self,item_name):
-        global items
-        # global is necessary to define we are using a global variable here
-        items = list(filter(lambda x: x['name'] != item_name,items))
-        # returns list of all items except the item_name mentioned
-        # overwrites existing items
-        return {"message":"item {} is deleted from items".format(item_name)}
+    def delete(self,name):
+        item = self.find_by_name(name)
+        if not item:
+            return {"message":"The item with name {} doesn't exist".format(name)}, 400
+        query = "DELETE FROM items WHERE name=?"
+        self.execute_query(query, (name,))
+        
+        
+        return {"message":"item {} is deleted from items".format(name)}

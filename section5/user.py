@@ -57,11 +57,11 @@ class UserRegister(Resource):
         help = "This field is mandatory"
     )
     def post(self):
-        # user_obj = next(filter(lambda x: x['username'] == username, items),None)
-        # if user_obj:
-        #     return {"message":"User with this username exists"}, 400
-        
         data = UserRegister.parser.parse_args()
+        
+        if User.find_by_username(data['username']):
+            return {"message":"User with this username already exists"}, 400
+        
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         
