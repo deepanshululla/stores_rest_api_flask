@@ -1,3 +1,7 @@
 Flask
 Flask-Restful
 Flask-JWT
+Flask-SQLAlchemy
+ConfigParser
+mysqlclient
+pymysql
