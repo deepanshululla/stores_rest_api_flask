@@ -25,6 +25,7 @@ class DB_Handler:
                 self.cursor.execute(query)
                 result=self.cursor.fetchall()
             return result
+            
     def execute_query_fetch_one(self, query, query_tuple=None):
         if query:
             if query_tuple:

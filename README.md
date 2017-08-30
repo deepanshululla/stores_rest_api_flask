@@ -1,4 +1,4 @@
-# Flask Rest APIs
+# REST API for E-Commerce Store
 
 ### GET /users
 
