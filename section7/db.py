@@ -3,8 +3,6 @@ import pymysql
 import os
 
 class DB_Handler:
-   
-    
     def __init__(self):
         self.DB_TYPE="mysql"
         self.DB_USERNAME = 'deepanshululla'
