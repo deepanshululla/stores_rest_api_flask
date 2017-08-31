@@ -17,9 +17,19 @@ api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
 api.add_resource(Users, '/users')
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 if __name__=="__main__":
     host = os.getenv('IP', '0.0.0.0');
     port = int(os.getenv('PORT', 5000));
-    # do not enable this on production
     app.config.from_object('settings')
+    # do not enable this on production
+    from db import db
+    # why are we importing here
+    # To avoid circular imports because models will also import db
+    
+    db.init_app(app)
+    
     app.run(host=host, port=port)

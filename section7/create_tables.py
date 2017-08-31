@@ -16,7 +16,7 @@ dbh.execute_query(create_table)
 # insert_query= "INSERT INTO users VALUES (?,?)"
 # cursor.execute(insert_query, user)
 
-create_table = "CREATE TABLE IF NOT EXISTS items (name VARCHAR(150) UNIQUE PRIMARY KEY, price float)"
+create_table = "CREATE TABLE IF NOT EXISTS items (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(150) UNIQUE, price float)"
 dbh.execute_query(create_table)
 
 # dbh.execute_query("INSERT INTO items VALUES (?,?)",('laptop','700'))

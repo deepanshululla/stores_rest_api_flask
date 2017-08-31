@@ -1,6 +1,9 @@
 import pymysql.cursors
 import pymysql
 import os
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 class DB_Handler:
     def __init__(self):
