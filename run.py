@@ -1,7 +1,7 @@
-from app import app
-from db import db
+from flask_rest import app
+from flask_rest import db
 
-
+app.config.from_object('settings')
 db.init_app(app)
 
 @app.before_first_request

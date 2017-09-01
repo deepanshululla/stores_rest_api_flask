@@ -1,7 +1,10 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
-import os
+
+
 from security import authenticate, identity
 from resources.user import UserRegister, Users
 from resources.item import Item, ItemList
@@ -9,6 +12,7 @@ from resources.store import Store, StoreList
 
 
 app = Flask(__name__)
+app.config.from_object('settings')
 api = Api(app)
 jwt = JWT(app, authenticate, identity)
 

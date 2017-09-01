@@ -1,6 +1,6 @@
 # REST API for E-Commerce Store
 
-* Created a REST API with python flask and SQLALCHEMY as ORM using MYSQL as the backend.
+* Created a REST API with python flask and SQLALCHEMY as ORM using Postgres as the backend.
 * Increased security by using JWT tokens for user authentication and authorization for specific requests.
 * Used Postman for testing and documenting the functionality of the REST API.
 
