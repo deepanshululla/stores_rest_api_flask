@@ -20,12 +20,12 @@ api.add_resource(Store,'/store/<string:name>')
 api.add_resource(StoreList,'/stores')
 
 
-@app.before_first_request
-def create_tables():
-    """
-        creates all tables before the first request is sent. But the database must exist beforehand
-    """
-    db.create_all()
+# @app.before_first_request
+# def create_tables():
+#     """
+#         creates all tables before the first request is sent. But the database must exist beforehand
+#     """
+#     db.create_all()
 
 if __name__=="__main__":
     host = os.getenv('IP', '0.0.0.0');
@@ -37,5 +37,8 @@ if __name__=="__main__":
     # To avoid circular imports because models will also import db
     
     db.init_app(app)
-    
+    if app.config['DEBUG']:
+        @app.before_first_request
+        def create_tables():
+            db.create_all()
     app.run(host=host, port=port)

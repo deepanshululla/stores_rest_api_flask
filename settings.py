@@ -8,8 +8,8 @@ SECRET_KEY = JWT_SECRET_KEY
 DEBUG = True;
 
 
-urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ["DATABASE_URL"])
+# urlparse.uses_netloc.append("postgres")
+# url = urlparse.urlparse(os.environ["DATABASE_URL"])
 DB_URL= os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 
 
