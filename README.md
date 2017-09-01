@@ -38,6 +38,21 @@ This will create an item with the name in url and price mentioned in json.If the
 
 This will delete an item with the mentioned name. If item doesn't exists it will fail.
 
+### GET /store/store-name
+
+This will return store with the mentioned name.No 2 stores can have same name. If store doesn't exists it will fail.
+
+### POST /store/store-name
+
+This will create a store with the name in url.If the store already exists, this will fail.
+
+### DEL /store/store-name
+
+This will delete store with the mentioned name. If store doesn't exists it will fail.
+
+### GET /stores
+
+This will return list of all stores in json format
 
 ## Sections
 
@@ -61,6 +76,6 @@ Section 7
 
 * Flask API with SQLALCHEMY used as ORM
 
-Section 7
+Section 8
 
 * Adding stores resource and model to section 7.

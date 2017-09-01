@@ -11,12 +11,13 @@ class ItemModel(db.Model):
     store = db.relationship('StoreModel')
     # we are creating store object for every item which defines the relationship to Store model
     
-    def __init__(self, name, price):
+    def __init__(self, name, price, store_id):
         self.name = name
         self.price = price
+        self.store_id = store_id
     
     def json(self):
-        return {'name': self.name, 'price': self.price}
+        return {'name': self.name, 'price': self.price, 'store_id':self.store_id}
     
     @classmethod        
     def find_by_name(cls,name):

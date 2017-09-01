@@ -14,7 +14,12 @@ class Item(Resource):
     parser.add_argument('price',
         type=float,
         required=True,
-        help = "This field is mandatory"
+        help = "Price field is mandatory"
+    )
+    parser.add_argument('store_id',
+        type=int,
+        required=True,
+        help = "Store id field is mandatory"
     )
     
     @jwt_required()
@@ -38,10 +43,11 @@ class Item(Resource):
             # 400 is bad request
         data = Item.parser.parse_args()
         # item_add = {"name": name, "price": data.get('price')}
-        item_add = ItemModel(name, data['price'])
+        item_add = ItemModel(name, data['price'], data['store_id'])
         try:
             item_add.save_to_db()
-        except:
+        except Exception as e:
+            print(e)
             return {"message":"Error occured with inserting entries"}, 500
             # 500 is Internal server error
         return item_add.json(), 201
@@ -52,7 +58,7 @@ class Item(Resource):
         item = ItemModel.find_by_name(name)
         if not item:
             # if item doesn't exist
-            item = ItemModel(name,data['price'])
+            item = ItemModel(name,data['price'], data['store_id'])
         else:
             # if item exists
             item.price = data['price']

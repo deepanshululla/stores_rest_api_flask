@@ -11,12 +11,11 @@ class StoreModel(db.Model):
     # However it is an expensive operation because it will go into item table and create a 
     # reference of store for each item
     items = db.relationship('ItemModel', lazy='dynamic')
-    
     def __init__(self, name):
         self.name = name
     
     def json(self):
-        return {'id': self.id, 'name': self.name, 'items':[item.json() for item in self.items]}
+        return {'id': self.id, 'name': self.name, 'items':[item.json() for item in self.items.all()]}
     
     @classmethod        
     def find_by_name(cls,name):
