@@ -12,9 +12,9 @@ DB_PASSWORD=''#not required for c9
 DATABASE_NAME = 'flask_rest_db'
 # DB must exists before application runs
 DB_HOST = os.getenv('DATABASE_URL', '0.0.0.0');
-# DB_PORT = os.getenv('PORT', '5432');
-# DB_URI = "postgresql://%s:%s@%s:%s/%s" % (DB_USERNAME, DB_PASSWORD, DB_HOST,DB_PORT, DATABASE_NAME)
-DB_URI = "mysql+pymysql://%s:%s@%s/%s" % (DB_USERNAME, DB_PASSWORD, DB_HOST, DATABASE_NAME)
+DB_PORT = os.getenv('PORT', '5432');
+DB_URI = "postgresql://%s:%s@%s:%s/%s" % (DB_USERNAME, DB_PASSWORD, DB_HOST,DB_PORT, DATABASE_NAME)
+# DB_URI = "mysql+pymysql://%s:%s@%s/%s" % (DB_USERNAME, DB_PASSWORD, DB_HOST, DATABASE_NAME)
 # uncomment for mYSQL
 
 SQLALCHEMY_DATABASE_URI = DB_URI;
