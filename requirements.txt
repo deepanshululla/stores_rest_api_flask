@@ -4,5 +4,3 @@ Flask-JWT
 Flask-SQLAlchemy
 ConfigParser
 pymysql
-Flask-Migrate
-Flask-Script
