@@ -1,5 +1,5 @@
-from flask_rest import app
-from flask_rest import db
+from app import app
+from db import db
 
 app.config.from_object('settings')
 db.init_app(app)
