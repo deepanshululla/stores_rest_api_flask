@@ -100,5 +100,7 @@ ENV/
 # mypy
 .mypy_cache/
 
-# SQLLITE data.db file
-section*/*.db
+
+
+# Data sqllite
+*.db
