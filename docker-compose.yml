@@ -1,4 +1,4 @@
-version:'2'
+version: '2'
 services:
         web:
             build: store_rest_api/.
