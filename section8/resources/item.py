@@ -3,11 +3,13 @@ from flask_jwt import jwt_required
 from models.item import ItemModel        
 
 class ItemList(Resource):
+    TABLE_NAME = 'items'
     def get(self):
         return {'items': [item.json() for item in ItemModel.query.all()]}
         # return {'items': list(map(lambda x:x.json(), ItemModel.query.all()))}
 
 class Item(Resource):
+    TABLE_NAME = 'items'
     parser = reqparse.RequestParser()
     parser.add_argument('price',
         type=float,

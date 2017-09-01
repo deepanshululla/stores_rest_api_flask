@@ -1,7 +1,7 @@
 # REST API for E-Commerce Store
 
 * Created a REST API with python flask and SQLALCHEMY as ORM using MYSQL as the backend.
-* Increased security by using JWT tokens for authentication and authorization for specific requests.
+* Increased security by using JWT tokens for user authentication and authorization for specific requests.
 * Used Postman for testing and documenting the functionality of the REST API.
 
 
@@ -17,7 +17,6 @@ This will return list of all items in json format
 
 This will return a specific item requested by name.No 2 items can have unique name.(Requires JWT token for authentication and authorization
 received via POST /auth). 
-
 
 ### POST /auth
 
@@ -61,3 +60,7 @@ Section 6
 Section 7
 
 * Flask API with SQLALCHEMY used as ORM
+
+Section 7
+
+* Adding stores resource and model to section 7.
