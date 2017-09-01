@@ -3,5 +3,9 @@ Flask-Restful
 Flask-JWT
 Flask-SQLAlchemy
 ConfigParser
-pymysql
+psycopg2
 uwsgi
+Flask-Heroku
+gunicorn
+Flask-Migrate
+Flask-Script==2.0.5

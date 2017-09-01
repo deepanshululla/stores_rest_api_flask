@@ -1,6 +1,6 @@
 from app import app
 from db import db
-
+from flask.ext.heroku import Heroku
 
 db.init_app(app)
 
