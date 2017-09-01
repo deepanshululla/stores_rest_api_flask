@@ -1,6 +1,0 @@
-Flask
-Flask-Restful
-Flask-JWT
-Flask-SQLAlchemy
-ConfigParser
-pymysql
