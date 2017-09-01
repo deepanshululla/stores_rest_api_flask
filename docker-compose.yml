@@ -1,6 +1,5 @@
 version:'2'
 services:
-    services:
         web:
             build: store_rest_api/.
             ports:
