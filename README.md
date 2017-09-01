@@ -1,9 +1,10 @@
-# REST API for E-Commerce Store
+# REST API for E-Commerce Store Deployed on heroku
 
 * Created a REST API with python flask and SQLALCHEMY as ORM using Postgres as the backend.
 * Increased security by using JWT tokens for user authentication and authorization for specific requests.
 * Used Postman for testing and documenting the functionality of the REST API.
 
+Visit https://rest-api-stores-test.herokuapp.com
 
 ### GET /users
 
