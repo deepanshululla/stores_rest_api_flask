@@ -21,7 +21,9 @@ https://rest-api-stores-test.herokuapp.com/users
 
 ##  Clone it..
 git clone https://github.com/deepanshululla/stores_rest_api_flask.git
+
 git checkout docker
+
 docker-compose up
 
 ## Docker images
