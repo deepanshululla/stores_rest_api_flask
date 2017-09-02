@@ -4,7 +4,9 @@
 * Increased security by using JWT tokens for user authentication and authorization for specific requests.
 * Used Postman for testing and documenting the functionality of the REST API.
 
-Visit https://rest-api-stores-test.herokuapp.com
+
+## API is live on 
+https://rest-api-stores-test.herokuapp.com
 
 ### GET /users
 
