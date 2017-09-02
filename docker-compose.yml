@@ -11,12 +11,15 @@ services:
             networks:
                 - web
             depends_on: 
-                - db            
+                - db
                 
         db:
             image: mariadb:10.1
             environment:
                 MYSQL_ROOT_PASSWORD: secret-password
+                MYSQL_DATABASE: db
+                MYSQL_USER: root
+                MYSQL_PASSWORD: secret-password
             ports:
                 - "3306:3306"
             hostname: db
@@ -27,3 +30,4 @@ networks:
   web:
     external:
       name: web-network
+
