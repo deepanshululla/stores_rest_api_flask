@@ -9,6 +9,16 @@
 ## API is live on 
 https://rest-api-stores-test.herokuapp.com
 
+eg: To view list of items
+
+https://rest-api-stores-test.herokuapp.com/items
+
+eg: To view list of users
+
+https://rest-api-stores-test.herokuapp.com/users
+
+
+
 ##  Clone it..
 git clone https://github.com/deepanshululla/stores_rest_api_flask.git
 git checkout docker
