@@ -1,6 +1,7 @@
-# REST API for E-Commerce Store on Docker
+# REST API for E-Commerce Store on Containers
 
-* Created a REST API with python flask and SQLALCHEMY as ORM using MariaDB as the backend.
+* Created a REST API with python flask and SQLALCHEMY as ORM using MySQL as the backend.
+* Used docker compose for orchestrating python and 
 * Increased security by using JWT tokens for user authentication and authorization for specific requests.
 * Used Postman for testing and documenting the functionality of the REST API.
 
