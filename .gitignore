@@ -100,7 +100,7 @@ ENV/
 # mypy
 .mypy_cache/
 
-
+volumes/
 
 # Data sqllite
 *.db
