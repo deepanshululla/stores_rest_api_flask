@@ -4,11 +4,14 @@
 * Increased security by using JWT tokens for user authentication and authorization for specific requests.
 * Used Postman for testing and documenting the functionality of the REST API.
 
+
+## API is live on 
+https://rest-api-stores-test.herokuapp.com
+
 ##  Clone it..
 git clone https://github.com/deepanshululla/stores_rest_api_flask.git
 git checkout docker
 docker-compose up
-
 
 ## Docker images
 https://hub.docker.com/r/deepanshululla/stores_rest_api/
