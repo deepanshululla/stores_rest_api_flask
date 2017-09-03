@@ -18,7 +18,11 @@ DB_HOST = "db:3306";
 DB_URI = "mysql+pymysql://%s:%s@%s/%s" % (DB_USERNAME, DB_PASSWORD, DB_HOST, DATABASE_NAME)
 # uncomment for mYSQL
 
-SQLALCHEMY_DATABASE_URI = DB_URI;
+try:
+    SQLALCHEMY_DATABASE_URI = DB_URI;
+except:
+    SQLALCHEMY_DATABASE_URI =  os.environ.get('DATABASE_URL', 'sqlite:///data.db');
+
 SQLALCHEMY_TRACK_MODIFICATIONS = True;
 # SET it true if enabling migrations
 # Basically SQLACHEMY has its own tracking mechanism so we are saying we don't need flask_SQL_ALCHEMy for it
