@@ -1,6 +1,9 @@
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
-from models.item import ItemModel        
+try:
+    from models.item import ItemModel
+except ModuleNotFoundError:
+    from stores_rest_api_flask.models.item import ItemModel
 
 class ItemList(Resource):
     TABLE_NAME = 'items'
@@ -77,4 +80,4 @@ class Item(Resource):
             item.delete_from_db()
         except:
             return {"message":"Error deleting the entry"}, 500
-        return {"message":"item {} is deleted from items".format(name)}
+        return {"message":"Item deleted"}

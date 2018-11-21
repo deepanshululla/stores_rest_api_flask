@@ -1,15 +1,13 @@
 version: '2'
 services:
         web:
-            build: store_rest_api/.
+            build: .
             ports:
                 - "5000:5000"
             links:
                 - db
             hostname: web
             restart: always
-            networks:
-                - web
             depends_on: 
                 - db
                 
@@ -23,11 +21,4 @@ services:
             ports:
                 - "3306:3306"
             hostname: db
-            networks:
-                - web
             restart: always
-networks:
-  web:
-    external:
-      name: web-network
-

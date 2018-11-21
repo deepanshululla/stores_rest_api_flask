@@ -1,5 +1,8 @@
 from flask_restful import Resource, reqparse
-from models.user import UserModel
+try:
+    from models.user import UserModel
+except:
+    from stores_rest_api_flask.models.user import UserModel
 
 class Users(Resource):
     def get(self):

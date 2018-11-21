@@ -1,5 +1,7 @@
-from db import db
-
+try:
+    from db import db
+except ModuleNotFoundError:
+    from stores_rest_api_flask.db import db
 
 class UserModel(db.Model):
     __tablename__='users'

@@ -1,4 +1,7 @@
-from db import db
+try:
+    from db import db
+except ModuleNotFoundError:
+    from stores_rest_api_flask.db import db
 
 class StoreModel(db.Model):
     __tablename__ = 'stores';
@@ -15,7 +18,7 @@ class StoreModel(db.Model):
         self.name = name
     
     def json(self):
-        return {'id': self.id, 'name': self.name, 'items':[item.json() for item in self.items.all()]}
+        return {'name': self.name, 'items':[item.json() for item in self.items.all()]}
     
     @classmethod        
     def find_by_name(cls,name):
