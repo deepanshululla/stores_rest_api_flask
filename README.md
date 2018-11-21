@@ -3,8 +3,8 @@
 * Created a REST API with python flask and SQLALCHEMY as ORM using MySQL as the backend.
 * Used docker compose for orchestrating python and MariaDB containers.
 * Increased security by using JWT tokens for user authentication and authorization for specific requests.
-* Used Postman for testing and documenting the functionality of the REST API.
-
+* Used Postman for system testing and documenting the functionality of the REST API.
+* Created unit,integration and system tests as well as makefile for test automation
 
 ## API is live on 
 https://rest-api-stores-test.herokuapp.com
