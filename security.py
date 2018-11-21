@@ -1,5 +1,8 @@
 from werkzeug.security import safe_str_cmp
-from models.user import UserModel
+try:
+    from models.user import UserModel
+except ModuleNotFoundError:
+    from stores_rest_api_flask.models.user import UserModel
 
 
 def authenticate(username,password):

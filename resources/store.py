@@ -1,5 +1,8 @@
 from flask_restful import Resource
-from models.store import StoreModel
+try:
+    from models.store import StoreModel
+except:
+    from stores_rest_api_flask.models.store import StoreModel
 
 class Store(Resource):
     def get(self,name):
@@ -39,7 +42,7 @@ class Store(Resource):
         except Exception as e:
             print(e)
             return {'message': "Error occured while deleting the store"}, 500
-        return {'message':"Store {store_name} deleted".format(store_name=name)}
+        return {'message':"Store Deleted"}
         
     
 class StoreList(Resource):
@@ -47,4 +50,4 @@ class StoreList(Resource):
         """
             returns list of all stores
         """
-        return {'stores':[store.json() for store in StoreModel.query.all()]}
+        return {'stores':[store.json() for store in StoreModel.find_all()]}

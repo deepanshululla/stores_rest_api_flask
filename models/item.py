@@ -1,4 +1,8 @@
-from db import db
+
+try:
+    from db import db
+except ModuleNotFoundError:
+    from stores_rest_api_flask.db import db
 
 class ItemModel(db.Model):
     __tablename__ = 'items';
@@ -17,13 +21,17 @@ class ItemModel(db.Model):
         self.store_id = store_id
     
     def json(self):
-        return {'name': self.name, 'price': self.price, 'store_id':self.store_id}
+        return {'name': self.name, 'price': self.price,'store_id':self.store_id}
     
     @classmethod        
     def find_by_name(cls,name):
         return cls.query.filter_by(name=name).first()
         # query = "SELECT * FROM {table} WHERE name=%s LIMIT 1".format(table=cls.TABLE_NAME)
         # returns an ItemModel object
+
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()
     
     def save_to_db(self):
         # SQL_ALCHEMY automatically checks if the data is changed, so takes care of both insert

@@ -1,4 +1,8 @@
-from db import db
+
+try:
+    from db import db
+except ModuleNotFoundError:
+    from stores_rest_api_flask.db import db
 
 
 class UserModel(db.Model):
@@ -22,6 +26,10 @@ class UserModel(db.Model):
     @classmethod    
     def find_by_id(cls, _id):
        return cls.query.filter_by(id=_id).first()
+
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()
       
     def save_to_db(self):
         db.session.add(self)
@@ -30,3 +38,4 @@ class UserModel(db.Model):
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
+
